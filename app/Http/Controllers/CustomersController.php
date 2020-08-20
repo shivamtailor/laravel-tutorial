@@ -15,4 +15,11 @@ class CustomersController extends Controller
             'customersList' => $customers
         ]);
     }
+
+    public function store() {
+        $customer = new Customer();
+        $customer->name = request('name');
+        $customer->save();
+        return back();
+    }
 }
