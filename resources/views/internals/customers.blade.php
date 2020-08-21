@@ -30,6 +30,15 @@
                     </select>
                     <small id="activeError" class="form-text text-danger">{{ $errors->first('active') }}</small>
                 </div>
+                <div class="form-group">
+                    <label for="active">Company</label>
+                    <select id="company_id" name="company_id" class="form-control">
+                        @foreach($companiesList as $company)
+                            <option value="{{$company->id}}">{{$company->name}}</option>
+                        @endforeach
+                    </select>
+                    <small id="activeError" class="form-text text-danger">{{ $errors->first('active') }}</small>
+                </div>
                 <button type="submit" class="btn btn-primary">Add Customer</button>
                 @csrf
             </form>
@@ -42,7 +51,7 @@
                 @foreach($activeCustomersList as $customer)
                     <li class="list-group-item d-flex justify-content-between align-items-center">
                         {{$customer->name}}
-                        <span class="badge badge-primary badge-pill">{{$customer->email}}</span>
+                        <span class="badge badge-primary badge-pill">{{$customer->company->name}}</span>
                     </li>
                 @endforeach
             </ul>
@@ -53,7 +62,24 @@
                 @foreach($inactiveCustomersList as $customer)
                     <li class="list-group-item d-flex justify-content-between align-items-center">
                         {{$customer->name}}
-                        <span class="badge badge-primary badge-pill">{{$customer->email}}</span>
+                        <span class="badge badge-primary badge-pill">{{$customer->company->name}}</span>
+                    </li>
+                @endforeach
+            </ul>
+        </div>
+    </div>
+    <br />
+    <div class="row">
+        <div class="col-6">
+            <h3>Company List</h3>
+            <ul class="list-group">
+                @foreach($companiesList as $company)
+                    <li class="list-group-item">{{$company->name}}
+                    <ul class="list-group">
+                    @foreach($company->customers as $customer)
+                        <li class="list-group-item">{{$customer->name}}</li>
+                    @endforeach
+                    </ul>
                     </li>
                 @endforeach
             </ul>
