@@ -7,6 +7,7 @@
         <div class="col-12">
             <h1>Customer Details</h1>
         </div>
+        <a href="/customers/{{$customer->id}}/edit" class="btn">Edit</a>
     </div>
     <div class="row">
         <div class="col-12">
