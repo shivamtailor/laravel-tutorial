@@ -1,16 +1,16 @@
 @extends('layout')
 
-@section('title','Customer List')
+@section('title','Add New Customer')
 
 @section('content')
     <div class="row">
         <div class="col-12">
-            <h1>Customers</h1>
+            <h1>Add New Customer</h1>
         </div>
     </div>
     <div class="row">
         <div class="col-12">
-            <form action="customers" method="post" class="pb-5">
+            <form action="/customers" method="post" class="pb-5">
                 <div class="form-group">
                     <label for="name">Name</label>
                     <input type="text" class="form-control" id="name" name="name" placeholder="Name" aria-describedby="nameError" value="{{old('name')}}">
@@ -44,47 +44,4 @@
             </form>
         </div>
     </div>
-    <div class="row">
-        <div class="col-6">
-            <h3>Active Customers</h3>
-            <ul class="list-group">
-                @foreach($activeCustomersList as $customer)
-                    <li class="list-group-item d-flex justify-content-between align-items-center">
-                        {{$customer->name}}
-                        <span class="badge badge-primary badge-pill">{{$customer->company->name}}</span>
-                    </li>
-                @endforeach
-            </ul>
-        </div>
-        <div class="col-6">
-            <h3>Inactive Customers</h3>
-            <ul class="list-group">
-                @foreach($inactiveCustomersList as $customer)
-                    <li class="list-group-item d-flex justify-content-between align-items-center">
-                        {{$customer->name}}
-                        <span class="badge badge-primary badge-pill">{{$customer->company->name}}</span>
-                    </li>
-                @endforeach
-            </ul>
-        </div>
-    </div>
-    <br />
-    <div class="row">
-        <div class="col-6">
-            <h3>Company List</h3>
-            <ul class="list-group">
-                @foreach($companiesList as $company)
-                    <li class="list-group-item">{{$company->name}}
-                    <ul class="list-group">
-                    @foreach($company->customers as $customer)
-                        <li class="list-group-item">{{$customer->name}}</li>
-                    @endforeach
-                    </ul>
-                    </li>
-                @endforeach
-            </ul>
-        </div>
-    </div>
-
-
 @endsection
