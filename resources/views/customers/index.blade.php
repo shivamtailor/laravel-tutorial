@@ -26,7 +26,7 @@
                 @foreach($customersList as $customer)
                     <tr>
                         <th scope="row">{{$customer->id}}</th>
-                        <td>{{$customer->name}}</td>
+                        <td><a href="/customers/{{$customer->id}}">{{$customer->name}}</a></td>
                         <td>{{$customer->email}}</td>
                         <td>{{$customer->company->name}}</td>
                         <td>{{$customer->active}}</td>

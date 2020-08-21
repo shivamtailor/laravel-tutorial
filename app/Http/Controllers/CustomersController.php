@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Company;
 use App\Customer;
+use Cassandra\Custom;
 use Illuminate\Http\Request;
 
 class CustomersController extends Controller
@@ -30,5 +31,10 @@ class CustomersController extends Controller
         ]);
         $customer = Customer::create($data);
         return redirect('customers');
+    }
+
+    public function show(Customer $customer)
+    {
+        return view('customers.show', compact('customer'));
     }
 }
