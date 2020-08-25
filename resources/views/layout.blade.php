@@ -9,6 +9,11 @@
 <body>
     <div class="container">
         @include('nav')
+        @if(session()->has('message'))
+            <div class="alert alert-success" role="alert">
+                <strong>Success </strong> {{ session()->get('message') }}
+            </div>
+        @endif
         @yield('content')
     </div>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>

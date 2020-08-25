@@ -93,3 +93,7 @@
     3. Created a ContactFormController
     4. Created Mailable class using php artisan make:mail ContactFormMail --markdown=emails.contact.contact-form
     5. Modify mail View 
+
+17. 20 :: Flashing Data to Session & Conditional Alerts in View
+    1. Added new code to layout.blade.php to display success message
+    2. Set message in session and show/hide it conditionally
