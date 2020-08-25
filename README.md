@@ -1,61 +1,95 @@
 <p align="center"><img src="https://res.cloudinary.com/dtfbvvkyp/image/upload/v1566331377/laravel-logolockup-cmyk-red.svg" width="400"></p>
 
-<p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/d/total.svg" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/v/stable.svg" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/license.svg" alt="License"></a>
-</p>
+## Change Logs
 
-## About Laravel
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+1. Routes : Views
+    1. Added new Routes
+    2. Added new Views and bind them with Routes
+    3. Passed data from Route to View
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+2.  Controllers
+    1. Add a new controller for "Customers"
+    2. Bind CustomersController to Route
+    3. Pass data from CustomersController to View
+    
+3.  Blade Layout
+    1. Created a new layout.blade.php
+    2. Add basic html layout with navigation and @yeild(‘content’)
+    3. Replace ‘content’ with by blade view
+    
+4.  Model : MySQL
+    1.  Configured MySQL in .env file
+    2.  php artisan migrate
+    3.  Created a new Model (with -m migrate option)
+    4.  Modified migration script and added new column called "name"
+    5.  php artisan migrate
+    6.  Created new Customers via tinker
+    7.  Fetch customersList via model in CustomersController.php and pass it to the View
 
-## Learning Laravel
+5.  Model : Added a new customer via form
+    1. Created a new <form> in customers.blade.php
+    2. Added a new POST Route called Customers@store
+    3. Added a new function store() to save/create new Customer in database via customer model
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+6.  Form Validation : Add Customer Form
+    1. Added code in CustomersController to validate request data
+    2. Added validation for required|min:3 for name field
+    3. Display errors on view
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 1500 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+7.  Customer Model : Add new "Email" field
+    1. Add new email field in migration script
+    2. Run php artisan migrate:rolback
+    3. Run php artisan migrate
+    4. Modify CustomerController to validate/save email field
+    5. Modify customers.blade.php to add email field
+    6. Move navigation html from layout.blade.php to nav.blade.php
+    7. Add section for "title" tag
 
-## Laravel Sponsors
+8.  Model : Eloquent Where Clause
+    1. Added new field (dropdown active/inactive) in Customer migration script
+    2. Run php artisan migrate:rolback
+    3. Run php artisan migrate
+    4. Added new dropdown field called "Active" with Active/Inactive options in customers.blade.php
+    5. Modified CustomerController to validate/save active dropdown field value
+    6. Modified view code to display two separate list one for Active Customer and another for Inactive Customer
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+9.  Eloquent Scopes & Mass Assignment
+    1. Change the way we are storing form fields and saving model
+    2. Resolve mass assignment error and disable it
 
-### Premium Partners
+10. 14 :: Eloquent : BelongsTo & HasMany Relationships
+    1. Created a new model called "Company"
+    2. Added new column "company_id" in Customer migration script
+    3. Added functions in Customer.php and Company.php models to get related records
+    4. Added "Company" dropdown on Customer form
+    5. Display list of Company and their customers as nested list
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[OP.GG](https://op.gg)**
+11. 15 :: Eloquent Accessors & RESTful Controller
+    1. Modify CustomerController as per RESTful documentation of Laravel
+    2. Separate Customer List/Create views
+    3. Other changes
 
-## Contributing
+12. 16 :: Eloquent Route Model Binding & RESTful Controller
+    1) Created a new View called show.blade.php
+    2) Make customer name as hyperlink to open detailView
+    3) Fetch customer record using "Route Model Binding"
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+13. 16 :: Eloquent Route Model Binding & RESTful Controller
+    1. Created a new View called show.blade.php
+    2. Make customer name as hyperlink to open detailView
+    3. Fetch customer record using "Route Model Binding"
 
-## Code of Conduct
+14. 17 :: Eloquent Route Model Binding & RESTful Controller :: Edit / Update
+    1. Edit Customer Form
+    2. Edit Customer Controller
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+15. 18 :: Eloquent Route Model Binding & RESTful Controller
 
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+16. 19 :: Handling a Contact Form Using a Laravel Mailable
+    1. Created a Contact Form
+    2. Added web routes
+    3. Created a ContactFormController
+    4. Created Mailable class using php artisan make:mail ContactFormMail --markdown=emails.contact.contact-form
+    5. Modify mail View 
