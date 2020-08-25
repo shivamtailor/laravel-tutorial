@@ -97,3 +97,9 @@
 17. 20 :: Flashing Data to Session & Conditional Alerts in View
     1. Added new code to layout.blade.php to display success message
     2. Set message in session and show/hide it conditionally
+
+18. 21 :: Artisan Authentication - Register, Login & Password Reset
+    1. Install auth
+        1. php artisan ui vue --auth
+        2. npm install && npm run dev
+    2. Refactor all views to adopt new layouts.app changes
